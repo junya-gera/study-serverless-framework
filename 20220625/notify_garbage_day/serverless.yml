@@ -1,0 +1,14 @@
+service: notify-garbage-day
+frameworkVersion: '3'
+
+provider:
+  name: aws
+  runtime: nodejs12.x
+  region: us-west-2
+
+functions:
+  pushMessage:
+    handler: handler.pushMessage
+    events:
+      - eventBridge:
+          schedule: rate(1 minute)
